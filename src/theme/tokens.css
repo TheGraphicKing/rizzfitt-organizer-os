@@ -1,0 +1,144 @@
+/* Rizzfitt brand tokens (Brand Guidelines v1.0, Oct 2026). Single source of truth.
+   Components use these through Tailwind utilities (see index.css @theme) or var().
+   Values come from the guidelines' JSON spec; do not add colours that are not in it. */
+:root {
+  color-scheme: dark;
+
+  /* Brand ramps */
+  --rf-orange-50: #fff6ed;
+  --rf-orange-300: #f9b578;
+  --rf-orange-400: #f68841;
+  --rf-orange-500: #f36b1c; /* Riz_Orange */
+  --rf-orange-600: #e45112;
+  --rf-orange-950: #411309;
+  --rf-blue-400: #7683ff;
+  --rf-blue-950: #00036c; /* Deep Blue */
+  --rf-red-600: #d41f1e; /* Red: LIVE, destructive, errors only */
+
+  /* Surfaces (neutral ramp) */
+  --bg-canvas: #0a0a0a; /* neutral-950, ground */
+  --bg-base: #0a0a0a;
+  --surface-0: #141414; /* neutral-900, sections, bottom sheet */
+  --surface-1: #1a1a1a; /* neutral-850, cards, list rows */
+  --surface-2: #1e1e1e; /* neutral-800, raised cards, chips at rest */
+  --surface-3: #252525; /* neutral-750, segmented track, nested panels */
+  --control: #2b2b2b; /* neutral-700, fields, secondary buttons, icon wells */
+  --divider: #333333; /* neutral-600 */
+  --glass: rgba(10, 10, 10, 0.9);
+  --glass-strong: #141414;
+  --scrim: rgba(10, 10, 10, 0.65);
+  --border-subtle: rgba(255, 255, 255, 0.07); /* hairline */
+  --border: rgba(255, 255, 255, 0.07);
+  --border-strong: #333333;
+
+  /* Text on dark */
+  --text-primary: #ffffff;
+  --text-secondary: #aaaaaa;
+  --text-tertiary: #888888;
+  --text-disabled: #555555; /* disabled only, never readable text */
+
+  /* Brand roles */
+  --brand: #f36b1c;
+  --brand-hover: #f68841;
+  --brand-pressed: #e45112;
+  --brand-text: #f36b1c;
+  --brand-soft: rgba(243, 107, 28, 0.14);
+  --brand-stroke: rgba(243, 107, 28, 0.45);
+  --brand-glow: rgba(243, 107, 28, 0.4);
+  --on-brand: #ffffff; /* labels on orange: white 16/600 */
+  --ink: #0a0a0a; /* text on light fills */
+
+  /* HQ console: Deep Blue for trust moments */
+  --hq: #00036c;
+  --hq-text: #7683ff;
+  --hq-soft: rgba(118, 131, 255, 0.14);
+
+  /* Sport objects (3D and court drawings). Courts sit on charcoal under floodlights. */
+  --court-surface: #252525;
+  --court-kitchen: #2b2b2b;
+  --court-apron: #141414;
+  --court-line: #ffffff;
+  --ball: #d4f24a;
+  --court-badminton: #1e1e1e;
+  --court-badminton-line: #ffffff;
+
+  /* 3D lights */
+  --light-key: #fff6ed;
+  --light-key-soft: #fff6ed;
+  --light-rim: #aaaaaa;
+  --light-rim-soft: #888888;
+  --light-white: #ffffff;
+  --shadow-color: #000000;
+
+  /* 3D materials */
+  --mat-carbon: #141414;
+  --mat-gold: #f9b578;
+  --mat-silver: #aaaaaa;
+  --mat-bronze: #bd3c11;
+  --mat-wood: #f9b578;
+  --mat-cork: #fff6ed;
+  --mat-feather: #ffffff;
+  --mat-cricket-red: #d41f1e;
+  --mat-grip: #2b2b2b;
+
+  /* Status */
+  --success: #2ecc71;
+  --success-soft: rgba(46, 204, 113, 0.13);
+  --warning: #f9b578; /* Orange 300, replaces amber accents */
+  --warning-soft: rgba(249, 181, 120, 0.13);
+  --danger: #ff5a4f; /* red text on dark */
+  --danger-solid: #d41f1e;
+  --danger-soft: rgba(212, 31, 30, 0.12);
+  --info: #aaaaaa;
+  --info-soft: #1e1e1e;
+  --live: #ff5a4f;
+  --live-solid: #d41f1e;
+
+  /* Avatar and sport-marker hues. Markers only: never buttons, backgrounds or brand artwork. */
+  --cat-1: #e67e22;
+  --cat-2: #3498db;
+  --cat-3: #2ecc71;
+  --cat-4: #e74c3c;
+  --cat-5: #9b59b6;
+  --cat-6: #1abc9c;
+  --cat-7: #3498db;
+  --cat-8: #9b59b6;
+
+  /* Event page action colour: always Rizz Orange */
+  --event-accent: var(--brand);
+  --event-accent-on: #ffffff;
+  --event-accent-soft: rgba(243, 107, 28, 0.14);
+  --event-accent-glow: rgba(243, 107, 28, 0.4);
+  --event-ground: #0a0a0a;
+
+  /* Radius */
+  --r-xs: 6px; /* tags */
+  --r-sm: 8px; /* small buttons */
+  --r-md: 12px; /* buttons, inputs */
+  --r-lg: 16px; /* cards, badges */
+  --r-xl: 24px; /* sheets, app icon */
+  --r-pill: 999px;
+
+  /* Elevation: lighter surfaces and hairlines; the only glow belongs to orange */
+  --elev-card: inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  --elev-float: 0 4px 24px rgba(0, 0, 0, 0.3);
+  --elev-sheet: 0 40px 80px rgba(0, 0, 0, 0.8);
+  --elev-glow: 0 6px 24px rgba(243, 107, 28, 0.4);
+  --focus-ring: 0 0 0 1px var(--brand), 0 0 0 4px rgba(243, 107, 28, 0.18);
+
+  /* Motion: 150 presses and toggles, 250 sheets and pages, 400 celebrations */
+  --dur-micro: 150ms;
+  --dur-small: 150ms;
+  --dur-medium: 250ms;
+  --dur-large: 250ms;
+  --ease-standard: cubic-bezier(0, 0, 0.2, 1);
+  --ease-emphasized: cubic-bezier(0, 0, 0.2, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+
+  /* Layout */
+  --sidebar-w: 264px;
+  --sidebar-w-collapsed: 76px;
+
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --font-display: 'Gilroy', 'Urbanist', 'Inter', system-ui, sans-serif;
+}

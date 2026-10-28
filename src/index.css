@@ -1,0 +1,241 @@
+@import 'tailwindcss';
+@import './theme/tokens.css';
+@import './theme/fonts.css';
+
+/* Tailwind reads the Night Court tokens. No raw hex in components. */
+@theme inline {
+  --color-canvas: var(--bg-canvas);
+  --color-base: var(--bg-base);
+  --color-s0: var(--surface-0);
+  --color-s1: var(--surface-1);
+  --color-s2: var(--surface-2);
+  --color-s3: var(--surface-3);
+  --color-control: var(--control);
+  --color-divider: var(--divider);
+  --color-ink: var(--ink);
+  --color-hq-text: var(--hq-text);
+  --color-live-solid: var(--live-solid);
+  --color-brand-stroke: var(--brand-stroke);
+  --color-scrim: var(--scrim);
+  --color-glass: var(--glass);
+  --color-line-subtle: var(--border-subtle);
+  --color-line: var(--border);
+  --color-line-strong: var(--border-strong);
+  --color-fg: var(--text-primary);
+  --color-fg2: var(--text-secondary);
+  --color-fg3: var(--text-tertiary);
+  --color-fg4: var(--text-disabled);
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-brand-pressed: var(--brand-pressed);
+  --color-brand-text: var(--brand-text);
+  --color-brand-soft: var(--brand-soft);
+  --color-brand-glow: var(--brand-glow);
+  --color-on-brand: var(--on-brand);
+  --color-hq: var(--hq);
+  --color-hq-soft: var(--hq-soft);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-danger: var(--danger);
+  --color-danger-solid: var(--danger-solid);
+  --color-danger-soft: var(--danger-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+  --color-live: var(--live);
+  --color-ball: var(--ball);
+  --color-court: var(--court-surface);
+  --color-court-kitchen: var(--court-kitchen);
+  --color-court-apron: var(--court-apron);
+  --color-court-line: var(--court-line);
+  --color-accent: var(--event-accent);
+  --color-on-accent: var(--event-accent-on);
+  --color-accent-soft: var(--event-accent-soft);
+  --color-cat-1: var(--cat-1);
+  --color-cat-2: var(--cat-2);
+  --color-cat-3: var(--cat-3);
+  --color-cat-4: var(--cat-4);
+  --color-cat-5: var(--cat-5);
+  --color-cat-6: var(--cat-6);
+  --color-cat-7: var(--cat-7);
+  --color-cat-8: var(--cat-8);
+
+  --radius-xs: var(--r-xs);
+  --radius-sm: var(--r-sm);
+  --radius-md: var(--r-md);
+  --radius-lg: var(--r-lg);
+  --radius-xl: var(--r-xl);
+  --radius-pill: var(--r-pill);
+
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
+
+  --shadow-card: var(--elev-card);
+  --shadow-float: var(--elev-float);
+  --shadow-glow: var(--elev-glow);
+  --shadow-sheet: var(--elev-sheet);
+
+  --ease-standard: var(--ease-standard);
+  --ease-emphasized: var(--ease-emphasized);
+}
+
+@layer base {
+  *,
+  ::before,
+  ::after,
+  ::backdrop {
+    border-color: var(--border);
+  }
+  html {
+    background: var(--bg-canvas);
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    margin: 0;
+    background: var(--bg-base);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 20px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100dvh;
+  }
+  ::selection {
+    background: var(--brand-soft);
+    color: var(--text-primary);
+  }
+  :focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+  }
+  button {
+    cursor: pointer;
+  }
+  /* Grid items may shrink below their content so long names truncate instead of overflowing. */
+  .grid > * {
+    min-width: 0;
+  }
+  button:disabled {
+    cursor: not-allowed;
+  }
+  * {
+    scrollbar-color: var(--surface-3) transparent;
+    scrollbar-width: thin;
+  }
+}
+
+/* Type scale from the brand guidelines. Marketing roles use the display face (Gilroy, fallback Urbanist). */
+@utility t-display-xl {
+  font-family: var(--font-display); font-size: 72px; line-height: 72px; font-weight: 700; letter-spacing: -0.04em;
+  @media (max-width: 767px) { font-size: 40px; line-height: 42px; letter-spacing: -0.03em; }
+}
+@utility t-display-l {
+  font-family: var(--font-display); font-size: 40px; line-height: 42px; font-weight: 700; letter-spacing: -0.03em;
+  @media (max-width: 767px) { font-size: 30px; line-height: 34px; }
+}
+/* app display / score: Inter 30/36 800, scores 36 700 tabular */
+@utility t-display-m { font-size: clamp(22px, 6vw, 36px); line-height: 1.1; font-weight: 700; font-variant-numeric: tabular-nums; }
+@utility t-h1 { font-size: 30px; line-height: 36px; font-weight: 800; }
+@utility t-h2 { font-size: 24px; line-height: 30px; font-weight: 700; }
+@utility t-h3 { font-size: 20px; line-height: 28px; font-weight: 700; letter-spacing: -0.5px; }
+@utility t-title { font-size: 16px; line-height: 24px; font-weight: 600; }
+@utility t-body-l { font-size: 16px; line-height: 1.55; font-weight: 400; }
+@utility t-body { font-size: 14px; line-height: 20px; font-weight: 400; }
+@utility t-small { font-size: 13px; line-height: 18px; font-weight: 400; }
+@utility t-caption { font-size: 12px; line-height: 16px; font-weight: 400; }
+@utility t-overline { font-size: 11px; line-height: 14px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; }
+@utility tnum { font-variant-numeric: tabular-nums; }
+
+@utility glass {
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+@utility card {
+  background: var(--surface-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-lg);
+  box-shadow: var(--elev-card);
+}
+
+@utility font-display {
+  font-family: var(--font-display);
+}
+
+/* Court-line pattern: faint lines behind headers and empty areas */
+@utility bg-courtlines {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='440' height='200' viewBox='0 0 440 200'%3E%3Cg fill='none' stroke='white' stroke-opacity='0.035' stroke-width='2'%3E%3Crect x='20' y='20' width='400' height='160'/%3E%3Cline x1='220' y1='20' x2='220' y2='180'/%3E%3Cline x1='150' y1='20' x2='150' y2='180'/%3E%3Cline x1='290' y1='20' x2='290' y2='180'/%3E%3Cline x1='20' y1='100' x2='150' y2='100'/%3E%3Cline x1='290' y1='100' x2='420' y2='100'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 440px 200px;
+}
+
+/* Floodlight spill: orange glow kept at or under 12% so cards stay legible */
+@utility floodlight {
+  background-image: radial-gradient(ellipse 60% 50% at 85% -10%, rgba(243, 107, 28, 0.1), transparent 70%);
+}
+
+@utility grain {
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.02;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    border-radius: inherit;
+  }
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
+}
+
+/* Motion helpers */
+@keyframes live-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+@keyframes ball-bounce { 0%, 100% { transform: translateY(0) scale(1, 1); } 45% { transform: translateY(-10px) scale(1, 1); } 50% { transform: translateY(-10px); } 92% { transform: translateY(0) scale(1.15, 0.85); } }
+@keyframes shimmer { 0% { background-position: -400px 0; } 100% { background-position: 400px 0; } }
+@keyframes shake { 0%, 100% { transform: translateX(0); } 20% { transform: translateX(-8px); } 40% { transform: translateX(8px); } 60% { transform: translateX(-5px); } 80% { transform: translateX(5px); } }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* The LIVE dot is the only thing that loops on an app screen (brand rule). */
+.animate-float { animation: none; }
+.ball-dot { animation: ball-bounce 700ms cubic-bezier(0.3, 0, 0.6, 1) infinite; }
+@keyframes soft-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.45; } }
+.animate-live { animation: live-pulse 1.4s ease-in-out infinite; }
+.animate-amber { box-shadow: inset 0 0 0 1px var(--warning); }
+.animate-shake { animation: shake 420ms var(--ease-standard); }
+.skeleton {
+  background: linear-gradient(90deg, var(--surface-2) 0, var(--surface-3) 50%, var(--surface-2) 100%);
+  background-size: 800px 100%;
+  animation: shimmer 1.4s linear infinite;
+  border-radius: var(--r-sm);
+}
+
+/* Reduced motion: from the OS or from the Prototype switcher (data-reduced-motion on <html>) */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float, .animate-live, .animate-amber, .skeleton { animation: none !important; }
+  .ball-dot { animation: soft-pulse 1.2s ease-in-out infinite !important; }
+  .animate-shake { animation: none !important; opacity: 0.85; }
+}
+html[data-reduced-motion='true'] .animate-float,
+html[data-reduced-motion='true'] .animate-live,
+html[data-reduced-motion='true'] .animate-amber,
+html[data-reduced-motion='true'] .skeleton { animation: none !important; }
+html[data-reduced-motion='true'] .ball-dot { animation: soft-pulse 1.2s ease-in-out infinite !important; }
+
+/* Court TV: sponsor marquee and ambient court-line glow */
+@keyframes tv-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.tv-marquee { width: max-content; }
+@keyframes tv-glow { 0%, 100% { opacity: 0.55; } 50% { opacity: 0.9; } }
+.tv-ambient {
+  background-image:
+    radial-gradient(60% 50% at 50% 110%, var(--event-accent-soft), transparent 70%),
+    linear-gradient(transparent 49.6%, var(--event-accent-soft) 50%, transparent 50.4%),
+    linear-gradient(90deg, transparent 24.8%, var(--event-accent-soft) 25%, transparent 25.2%, transparent 74.8%, var(--event-accent-soft) 75%, transparent 75.2%);
+}
+@media (prefers-reduced-motion: reduce) { .tv-marquee, .tv-ambient { animation: none; } }
+html[data-reduced-motion='true'] .tv-marquee, html[data-reduced-motion='true'] .tv-ambient { animation: none; }
